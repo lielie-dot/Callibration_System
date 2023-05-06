@@ -68,7 +68,7 @@ def donne_decalage_azimut(fichier1, fichier2):
 
 def donne_decalage_azimut_corrige(fichier1, fichier2, mape_max):
     """Retourne la liste des decalage pour les differentes valeurs
-    de reference et mesuree, en effectuant un test sur l'erreur absolue moyenne"""
+    de reference et mesuree, en effectuant un test sur le MAPE"""
 
     (x, y) = donne_positions_mesurees(fichier2)
     (AzimutRef, HauteurRef) = donne_azimut_hauteur_theo(fichier1)
@@ -106,7 +106,7 @@ def valeur_acceptee(azimut_ref_courant, azimut_mes_courant, valeurs_predites, va
 
 def valeur_acceptee_MAPE(azimut_ref_courant, azimut_mes_courant, valeurs_predites, valeurs_observees, mape_max):
     """effectue un test sur les valeurs que l'on va ajouter pour eviter toute
-    valeur aberrante pouvant modifier la callibration en utilisant l'erreur moyenne absolue  """
+    valeur aberrante pouvant modifier la callibration en utilisant le MAPE  """
 
     vp = valeurs_predites.copy()
     vo = valeurs_observees.copy()
@@ -130,7 +130,7 @@ def valeur_acceptee_MAPE(azimut_ref_courant, azimut_mes_courant, valeurs_predite
 
 
 def donne_erreur_moyenne_absolue(valeurs_observees, valeurs_predites):
-    """calcule l'erreur absolue moyenne"""
+    """calcule le MAPE"""
     erreur = 0
     for k in range(0, len(valeurs_observees)):
         if valeurs_observees[k] != 0:
